@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "./instructions.h"
 
 int main(int argc, char **argv)
 {
@@ -21,13 +22,7 @@ int main(int argc, char **argv)
 
     int pc = 0;
     while (pc < fsize) {
-        int x = 0;
-        while (x != 15) {
-            printf("%02X  ", (unsigned char)buffer[pc]);
-            pc++;
-            x++;
-        }
-        printf("\n");
+        pc += InstructionDisassembler(buffer, pc);
     }
 
     return 0;
