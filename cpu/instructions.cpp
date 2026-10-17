@@ -26,13 +26,36 @@ int InstructionDisassembler(char *buffer, int pc)
         printf("DCR");
         break;
     case 0x06:
-        printf("MVI %02x", buffer[pc + 1]);
+        printf("MVI B, %02x", (unsigned char)buffer[pc + 1]);
+        opbytes = 2;
         break;
     case 0x07:
         printf("RLC");
         break;
     case 0x08:
-        printf("NOP");
+        printf("Undocumented NOP");
+        break;
+    case 0x09:
+        printf("DAD B");
+        break;
+    case 0x0A:
+        printf("LDAX B");
+        break;
+    case 0x0B:
+        printf("DCX B");
+        break;
+    case 0x0C:
+        printf("INR C");
+        break;
+    case 0x0D:
+        printf("DCR C");
+        break;
+    case 0x0E:
+        printf("MVI C, %02x", (unsigned char)buffer[pc + 1]);
+        opbytes = 2;
+        break;
+    case 0x0F:
+        printf("RRC");
         break;
     default:
         printf("Unknown instruction");
