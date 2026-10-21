@@ -57,6 +57,57 @@ int InstructionDisassembler(char *buffer, int pc)
     case 0x0F:
         printf("RRC");
         break;
+    case 0x10:
+        printf("NOP");
+        break;
+    case 0x11:
+        printf("LXI %02x, %02x", (unsigned char)buffer[pc + 1], (unsigned char)buffer[pc + 2]);
+        opbytes = 3;
+        break;
+    case 0x12:
+        printf("STAX D");
+        break;
+    case 0x13:
+        printf("INX D");
+        break;
+    case 0x14:
+        printf("INR D");
+        break;
+    case 0x15:
+        printf("DCR D");
+        break;
+    case 0x16:
+        printf("MVI D, %02x", buffer[pc + 1]);
+        opbytes = 2;
+        break;
+    case 0x17:
+        printf("RAL");
+        break;
+    case 0x18:
+        printf("NOP");
+        break;
+    case 0x19:
+        printf("DAD D");
+        break;
+    case 0x1A:
+        printf("LDAX D");
+        break;
+    case 0x1B:
+        printf("DCX D");
+        break;
+    case 0x1C:
+        printf("INR E");
+        break;
+    case 0x1D:
+        printf("DCR D");
+        break;
+    case 0x1E:
+        printf("MVI E, %02x", buffer[pc + 1]);
+        opbytes = 2;
+        break;
+    case 0x1F:
+        printf("RAR");
+        break;
     default:
         printf("Unknown instruction");
         break;
